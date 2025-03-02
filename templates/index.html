@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction Form</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Form Container */
+        .container {
+            width: 40%;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Title */
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        /* Form Fields */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Button */
+        input[type="submit"] {
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(to right, #5b86e5, #36d1dc);
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Diabetes Prediction Form</h2>
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hypertension">Hypertension (mmHg):</label>
+                <input type="number" id="hypertension" name="hypertension">
+            </div>
+
+            <div class="form-group">
+                <label for="heart_disease">Heart Disease:</label>
+                <select id="heart_disease" name="heart_disease" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="smoking_history">Smoking History:</label>
+                <select id="smoking_history" name="smoking_history" required>
+                    <option value="never">Never</option>
+                    <option value="No Info">No Info</option>
+                    <option value="current">Current</option>
+                    <option value="former">Former</option>
+                    <option value="ever">Ever</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="number" id="bmi" name="bmi">
+            </div>
+
+            <div class="form-group">
+                <label for="hba1c_level">HbA1c Level (%):</label>
+                <input type="number" id="hba1c_level" name="hba1c_level">
+            </div>
+
+            <div class="form-group">
+                <label for="blood_glucose_level">Blood Glucose Level (mg/dL):</label>
+                <input type="number" id="blood_glucose_level" name="blood_glucose_level">
+            </div>
+
+            <input type="submit" value="Predict">
+        </form>
+        <br>
+        {{ prediction_text }}
+    </div>
+
+</body>
+
+</html>
+

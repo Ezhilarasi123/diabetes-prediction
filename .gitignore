@@ -1,0 +1,14 @@
+# Ignore Python virtual environment
+venv/
+
+# Ignore model files (if they are large)
+*.pkl
+
+# Ignore dataset files (optional if it's too large)
+*.csv
+
+# Ignore temporary and cache files
+__pycache__/
+*.pyc
+*.pyo
+*.db
